@@ -33,6 +33,10 @@
         var homologador = document.getElementById('homologador').value
         var data = document.getElementById('data').value
         var sei = document.getElementById('sei').value
+
+        db.transaction (function(armazenar){
+          armarzenar.executeSql('INSERT INTO troca (nome, masp, sorigem, sdestino, homologador, datatroca, sei) VALUES (?, ?, ?, ?, ?, ?, ?)' [nome, masp, sorigem, sdestino, homologador, datatroca, sei])
+        })
       }
     </script>
   </head>
@@ -51,7 +55,7 @@
       <div class="col-sm-8">
         <h3>Informações Necessárias</h3>
 
-         <form action="processa.html" method="get">
+         <form method="get" onsubmit="salvar()">
             <div class="form-group">
                 <label for="nome">Nome:</label>
                 <input type="text" class="form-control" id="nome" name="nome">
@@ -88,7 +92,7 @@
             </div>
 
 
-            <button type="submit" class="btn btn-primary">Enviar</button>
+            <button type="submit" class="btn btn-primary" value="Enviar">Enviar</button>
             <button type="reset" class="btn btn-default">Resetar</button>
 
           </form>
