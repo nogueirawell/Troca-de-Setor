@@ -19,6 +19,22 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
   
+    <script type='text/javascript'>
+      var db = openDatabase('Meubanco', '2.0', 'Mybase', 4048)
+      db.transaction(function(criar){
+        criar.executeSql('CREATE TABLE troca (id INTEGER PRIMARY KEY AUTOINCREMENT, nome VARCHAR(255) NOT NULL, masp VARCHAR(8) NOT NULL, sorigem VARCHAR(255) NOT NULL, sdestino VARCHAR(255) NOT NULL, homologador VARCHAR(255) NOT NULL, datatroca VARCHAR(255) NOT NULL, sei VARCHAR(255) NOT NULL')
+      })
+
+      function salvar(){
+        var nome = document.getElementById('nome').value
+        var masp = document.getElementById('masp').value
+        var sorigem = document.getElementById('sorigem').value
+        var sdestino = document.getElementById('sdestino').value
+        var homologador = document.getElementById('homologador').value
+        var data = document.getElementById('data').value
+        var sei = document.getElementById('sei').value
+      }
+    </script>
   </head>
   <body>
 
@@ -64,6 +80,11 @@
             <div class="form-group">
                 <label for="data">Mês em que será homomogado pelo novo Coordenador</label>
                 <input type="date" class="form-control" id="data" name="data">
+            </div>
+
+            <div class="form-group">
+              <label for="sei">SEI</label>
+              <input type="text" class="form-control" id="sei" name="sei">
             </div>
 
 
